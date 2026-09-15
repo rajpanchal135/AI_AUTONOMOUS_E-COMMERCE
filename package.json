@@ -1,0 +1,8 @@
+{
+  "name": "ai-autonomous-e-commerce",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix apps/web install && npm --prefix apps/web run build && node -e \"const fs=require('fs'); fs.cpSync('apps/web/dist', 'dist', {recursive: true});\""
+  }
+}
