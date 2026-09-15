@@ -1,8 +1,10 @@
-const API_BASE = typeof window !== 'undefined'
-  ? (window.location.port === '3000' || window.location.port === '5173'
-      ? 'http://localhost:8001/api/v1'
-      : '/api/v1')
-  : '/api/v1';
+const API_BASE = (import.meta as any).env?.VITE_API_URL
+  ? `${(import.meta as any).env.VITE_API_URL.replace(/\/$/, '')}/api/v1`
+  : typeof window !== 'undefined'
+    ? (window.location.port === '3000' || window.location.port === '5173'
+        ? 'http://localhost:8001/api/v1'
+        : '/api/v1')
+    : '/api/v1';
 
 export function getAuthToken(): string | null {
   if (typeof window === 'undefined') return null;
